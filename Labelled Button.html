@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task List</title>
+</head>
+<body>
+  <h2>Task List</h2>
+  <input type="text" id="itemInput" placeholder="Enter a task">
+  <button onclick="addItem()">Add Item</button>
+  <ul id="itemList"></ul>
+  <script>
+    function addItem() {
+      let input = document.getElementById("itemInput");
+      let inputValue = input.value.trim();
+      if (inputValue === "") {
+        alert("Please enter some text");
+        return;
+      }
+      let li = document.createElement("li");
+      li.textContent = inputValue;
+      let deleteBtn = document.createElement("button");
+      deleteBtn.textContent = "Delete";
+      deleteBtn.className = "delete-btn";
+      deleteBtn.onclick = function() {
+        li.remove();
+      };
+      li.appendChild(deleteBtn);
+      document.getElementById("itemList").appendChild(li);
+      input.value = "";
+    }
+  </script>
+</body>
+</html>
+
